@@ -13,3 +13,7 @@ This project contains:
 - Several kinds of spring data operations like, mapping OneToOne / ManyToOne, @ElementCollection, several ways of querying (using spring data features like implementing CrudRepository and using findById, findByFieldName), JPQL queries, Native queries and dynamic queries using Specification/Criteria
 - JUnit tests
   
+Project 2 - Using Kafka Producer + Consumer / Kafka Streams
+- Using docker composer to run kafka
+- Creating a Kafka Producer and a Consumer
+- Simple demo using Kafka Streams
