@@ -1,0 +1,33 @@
+scalar Long
+
+type Query {
+  findPersonById(id: Long): Author
+}
+
+type Mutation {
+    addAuthor(author: AuthorInput): Author
+}
+
+type Book {
+  id: Int
+  name: String
+}
+
+type Author {
+  id: Long
+  name: String
+  phones: [String]
+  bookList: [Book]!
+}
+
+input AuthorInput {
+  id: Long
+  name: String
+  phones: [String]
+  bookList: [BookInput]!
+}
+
+input BookInput {
+  id: Int
+  name: String
+}

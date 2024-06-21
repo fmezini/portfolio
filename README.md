@@ -1,6 +1,6 @@
 # portfolio
 
-This is my portfolio containing small pieces of java codes to illustrate main things that we should do coding in our daily basis. 
+This is my portfolio containing small pieces of java codes to illustrate main things that usually design/code in my daily basis. 
 I am not allowed to add real projects here as it has been done for companies and the companies has all the rights related to the code.
 
 Project 1 - Spring-data-demo
@@ -17,3 +17,10 @@ Project 2 - Using Kafka Producer + Consumer / Kafka Streams
 - Using docker composer to run kafka
 - Creating a Kafka Producer and a Consumer
 - Simple demo using Kafka Streams
+
+Project 3 - Small graphql 
+- Using SpringBoot + Graphql
+- Creating queries and mutations
+- Mapping the long as a scalar type
+- Creating types and inputs
+- Running a unit test in graphql
