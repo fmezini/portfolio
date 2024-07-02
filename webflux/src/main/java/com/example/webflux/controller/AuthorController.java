@@ -4,6 +4,7 @@ import com.example.webflux.domain.Author;
 import com.example.webflux.dto.AuthorDTO;
 import com.example.webflux.service.AuthorService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.r2dbc.spi.ConnectionFactory;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.MediaType;
@@ -18,6 +19,7 @@ public class AuthorController {
     private final AuthorService service;
 
     private final ModelMapper modelMapper;
+
 
 
 
@@ -36,4 +38,20 @@ public class AuthorController {
         return service.addAuthor(author).map(a -> modelMapper.map(a, AuthorDTO.class));
     }
 
+    @GetMapping(value = "/author/dynamic", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Flux<AuthorDTO> getAuthorsDynamic(@RequestParam(name = "name", required = false) String name, @RequestParam(name="id", required = false) Integer id) {
+        Author a = new Author();
+        a.setId(id);
+        a.setName(name);
+        return service.findAll(a).map(author -> modelMapper.map(author, AuthorDTO.class));
+    }
+
+
+    @GetMapping(value = "/author/dynamic-building", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Flux<AuthorDTO> getAuthorsDynamicBuilding(@RequestParam(name = "name") String name, @RequestParam(name="id") Integer id) {
+        Author a = new Author();
+        a.setId(id);
+        a.setName(name);
+        return service.findAllDynamic(a).map(author -> modelMapper.map(author, AuthorDTO.class));
+    }
 }
