@@ -20,38 +20,35 @@ public class AuthorController {
 
     private final ModelMapper modelMapper;
 
-
-
-
     @GetMapping(value = "/author", produces = MediaType.APPLICATION_JSON_VALUE)
     public Flux<AuthorDTO> getAuthors() {
-        return service.findAll().map(a -> modelMapper.map(a, AuthorDTO.class));
+        return service.findAll();
     }
 
     @GetMapping(value="/author/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<AuthorDTO> getAuthor(@PathVariable("id") Integer id) {
-        return service.findById(1).map(a -> modelMapper.map(a, AuthorDTO.class));
+        return service.findById(1);
     }
 
     @PostMapping(value="/author")
     public Mono<AuthorDTO> addAuthor(@RequestBody AuthorDTO author) {
-        return service.addAuthor(author).map(a -> modelMapper.map(a, AuthorDTO.class));
+        return service.addAuthor(author);
     }
 
     @GetMapping(value = "/author/dynamic", produces = MediaType.APPLICATION_JSON_VALUE)
     public Flux<AuthorDTO> getAuthorsDynamic(@RequestParam(name = "name", required = false) String name, @RequestParam(name="id", required = false) Integer id) {
-        Author a = new Author();
+        AuthorDTO a = new AuthorDTO();
         a.setId(id);
         a.setName(name);
-        return service.findAll(a).map(author -> modelMapper.map(author, AuthorDTO.class));
+        return service.findAll(a);
     }
 
 
     @GetMapping(value = "/author/dynamic-building", produces = MediaType.APPLICATION_JSON_VALUE)
     public Flux<AuthorDTO> getAuthorsDynamicBuilding(@RequestParam(name = "name") String name, @RequestParam(name="id") Integer id) {
-        Author a = new Author();
+        AuthorDTO a = new AuthorDTO();
         a.setId(id);
         a.setName(name);
-        return service.findAllDynamic(a).map(author -> modelMapper.map(author, AuthorDTO.class));
+        return service.findAllDynamic(a);
     }
 }
