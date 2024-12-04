@@ -1,0 +1,6 @@
+Listing all products
+<ul>
+    @for (item of products; track item.id) {
+        <li><app-product [product]="item"></app-product></li>
+    }
+</ul>
