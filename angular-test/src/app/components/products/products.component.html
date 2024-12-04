@@ -1,6 +1,6 @@
-Listing all products
+<p>Listing all products</p>
 <ul>
     @for (item of products; track item.id) {
-        <li><app-product [product]="item"></app-product></li>
+        <li><app-product [product]="item" (emitter)="handleEmitter($event)"></app-product></li>
     }
 </ul>

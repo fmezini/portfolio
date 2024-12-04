@@ -21,6 +21,12 @@ export class ProductsComponent implements OnInit {
     }
   ]
 
+  handleEmitter(event: any) {
+    const index = this.products.indexOf(event);
+    this.products.splice(index, 1);
+    alert(`${event.name} has been deleted`);
+  }
+
   ngOnInit(): void {
   }
 
