@@ -1,0 +1,45 @@
+<br/><br/>
+<form>
+    ID: <input type="text" name="productId" [(ngModel)]="product.id" required #productId="ngModel"/>
+    @if ((productId.touched && (productId.dirty || productId.invalid)) && productId.hasError('required')) {
+        <span>ID is required</span>
+    }
+    <br/>
+    NAME: <input type="text" name="productName" [(ngModel)]="product.name" required minlength="3" #productName="ngModel"/>
+    @if (productName.touched && (productName.dirty || productName.invalid)) {
+        @if (productName.hasError('required')) {
+            <span>Name is required</span>
+        }
+        @if (productName.hasError('minlength')) {
+            <span>Name didn't met the minimum length</span>
+        }
+    }
+    <br/>
+    DESCRIPTION: <input type="text" name="productDescription" [(ngModel)]="product.description" #productDescription="ngModel"/>
+    <br/>
+    <button (click)="addProduct()">Add</button>   
+</form>
+
+<br/><br/>
+Validating when submit
+<br/>
+<form #f="ngForm" (ngSubmit)="addProduct2()">
+    ID: <input type="text" name="productId2" [(ngModel)]="product2.id" required #productId2="ngModel"/>
+    @if (f.submitted && productId2.hasError('required')) {
+        <span>ID is required</span>
+    }
+    <br/>
+    NAME: <input type="text" name="productName2" [(ngModel)]="product2.name" required minlength="3" #productName2="ngModel"/>
+    @if (f.submitted) {
+        @if (productName.hasError('required')) {
+            <span>Name is required</span>
+        }
+        @if (productName2.hasError('minlength')) {
+            <span>Name didn't met the minimum length</span>
+        }
+    }
+    <br/>
+    DESCRIPTION: <input type="text" name="productDescription2" [(ngModel)]="product2.description" #productDescription2="ngModel"/>
+    <br/>
+    <button type="submit">Add</button>   
+</form>
