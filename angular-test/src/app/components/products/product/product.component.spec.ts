@@ -14,6 +14,8 @@ describe('ProductComponent', () => {
 
     fixture = TestBed.createComponent(ProductComponent);
     component = fixture.componentInstance;
+    // setting the input into the component
+    component.product = { id: 1, name: "Name"};
     fixture.detectChanges();
   });
 
@@ -21,3 +23,4 @@ describe('ProductComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+ 
