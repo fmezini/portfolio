@@ -1,1 +1,11 @@
-<p>add-product-reactive works!</p>
+<br/><br/>
+<form [formGroup]="controls" #f="ngForm" (ngSubmit)="addProduct()">
+    ID: <input type="text" name="productId2" formControlName="id" required/>
+    <br/>
+    NAME: <input type="text" name="productName2" formControlName="name"/>
+
+    <br/>
+    DESCRIPTION: <input type="text" name="productDescription2" formControlName="description"/>
+    <br/>
+    <button type="submit">Add</button>   
+</form>
